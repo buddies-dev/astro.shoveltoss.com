@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const currentYear = new Date().getFullYear();
+
+---
+
+<Layout heading="Shoveltoss" title="Welcome to Shoveltoss.">
+	<div class="text-center">
+		<p>Welcome to the official Shoveltoss website.</p>
+	</div>
+	<div class="flex flex-row justify-evenly">
+		<img class="w-1/2 lg:w-1/3" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630897183/shoveltoss.com/new-gif_soend3.gif" />
+		<img class="w-1/2 lg:w-1/3" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630897147/shoveltoss.com/new-gif_z5tflr.gif" />
+	</div>
+	<div class="lg:text-center">
+		<p>Shoveltoss is a phenomena birthed in the heart of Little Italy by two boys, and the dream of a better shovel-based sport.</p>
+		<p>With it's inaugural tournament in the summer of 2016, Shoveltoss is now in it it's {currentYear - 2016}th year and third venue!</p>
+	</div>
+	<div class="flex flex-row justify-center">
+		<img class="mt-4 lg:w-1/2" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898108/shoveltoss.com/05a78d71b6c1491199825af89d3a1154_qflxtq.jpg" />
+	</div>
+</Layout>
+
+<style>
+	.astro-a {
+		position: absolute;
+		top: -32px;
+		left: 50%;
+		transform: translatex(-50%);
+		width: 220px;
+		height: auto;
+		z-index: -1;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 2rem;
+		padding: 0;
+	}
+</style>

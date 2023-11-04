@@ -1,0 +1,78 @@
+---
+interface Props {
+	title: string;
+	heading: string;
+}
+
+import Nav from "../components/Nav.astro"
+
+const { heading, title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="p-[1rem] w-[800px] md:w-[100%] lg:w-[100%]">
+			<h1>{heading}</h1>
+			<Nav currentPage={heading} />
+		</div>
+		<main class="flex flex-col lg:w-[100%]">
+			<slot />
+		</main>
+		<footer class="flex flex-row justify-center p-[1rem] w-[800px] md:w-[100%] lg:w-[100%]">
+			<span>Copyleft &copy; 2023 - Buddies Inc.</span>
+		</footer>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+		background-size: 224px;
+		color: white;
+		font-size: 20px;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		/* max-width: calc(100% - 2rem); */
+		line-height: 1.6;
+	}
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+	}
+</style>

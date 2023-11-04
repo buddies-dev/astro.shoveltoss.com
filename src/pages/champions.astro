@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+
+---
+
+<Layout heading="Champions 👑" title="Welcome to Astro.">
+	<div class="flex flex-col gap-8">
+		<Card>
+			<h2>2016 - Brian A. (1)</h2>
+			<p>The OG. A real pioneer. The George Washington of Shoveltoss, if you will.</p>
+		</Card>
+		<Card>
+			<h2>2017 - Alex E. (1)</h2>
+			<p>An absolute force. A legendary performance with coaching by the mastermind Joe.</p>
+		</Card>
+		<Card>
+			<h2>2018 - Max V. (1)</h2>
+			<p>Winning in the sloppiest conditions on record make his win only more impressive.</p>
+			<div class="flex flex-row justify-center">
+				<img src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630213818/shoveltoss.com/dc278719-609f-4a28-9c96-3df8cfae1ea0.jpg" />
+			</div>
+		</Card>
+		<Card>
+			<h2>2019 - Phil D. (1)</h2>
+			<p>Inaugural champion of the newest Shoveltoss venue. Second win for coach Joe. </p>
+			<div class="flex flex-row justify-center">
+				<img class="h-1/2 w-1/2" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898121/shoveltoss.com/5738b77dcfad401e85ff70b877f35bf8_k2isey.jpg" />
+			</div>
+		</Card>
+		<Card>
+			<h2>2021 - Nick P (1)</h2>
+			<p>First champion in the post-COVID era. Miocarditis and lung scarring are no match for a real champ.</p>
+		</Card>
+		<Card>
+			<h2>2023 - Nick P. (2)</h2>
+			<p>Our first back to back champion. Chuggo is too nasty with it.</p>
+			<div class="flex flex-row justify-center">
+				<img class="h-1/2 w-1/2" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1699066023/shoveltoss.com/IMG_4400_bewhqj.png" />
+			</div>
+		</Card>
+	</div>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+	.astro-a {
+		position: absolute;
+		top: -32px;
+		left: 50%;
+		transform: translatex(-50%);
+		width: 220px;
+		height: auto;
+		z-index: -1;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.instructions {
+		margin-bottom: 2rem;
+		border: 1px solid rgba(var(--accent-light), 25%);
+		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
+		padding: 1.5rem;
+		border-radius: 8px;
+	}
+	.instructions code {
+		font-size: 0.8em;
+		font-weight: bold;
+		background: rgba(var(--accent-light), 12%);
+		color: rgb(var(--accent-light));
+		border-radius: 4px;
+		padding: 0.3em 0.4em;
+	}
+	.instructions strong {
+		color: rgb(var(--accent-light));
+	}
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+		gap: 2rem;
+		padding: 0;
+	}
+</style>
