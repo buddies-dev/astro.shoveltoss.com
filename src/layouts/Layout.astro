@@ -24,7 +24,7 @@ const { heading, title } = Astro.props;
 			<h1>{heading}</h1>
 			<Nav currentPage={heading} />
 		</div>
-		<main class="flex flex-col lg:w-[100%]">
+		<main class="flex flex-col lg:w-3/4">
 			<slot />
 		</main>
 		<footer class="flex flex-row justify-center p-[1rem] w-[800px] md:w-[100%] lg:w-[100%]">

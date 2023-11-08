@@ -6,9 +6,15 @@ const gallery = images.gallery;
 ---
 
 <Layout heading="Gallery 🖼️" title="Welcome to Astro.">
-	<div class="flex flex-col gap-4 lg:flex-wrap lg:content-center">
+	<div class="flex flex-col lg:flex-wrap lg:content-center lg:grid xl:grid lg:grid-cols-3 gap-4">
 		{
-			gallery.map((image) => <img class="border border-dashed lg:w-1/2" src={image} /> )
+			gallery.map((image, i) => {
+				return (
+					<div class="relative lg:overflow-hidden lg:max-h-[185px]">
+						<img class="h-full w-full lg:object-cover lg:object-center" src={image} />
+					</div>
+				)
+			})
 		}
 	</div>
 </Layout>
