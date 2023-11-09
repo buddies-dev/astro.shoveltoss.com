@@ -4,6 +4,11 @@ interface Props {
 	heading: string;
 }
 
+import { Image } from 'astro:assets';
+import shovel from '../../public/shovel-white.png';
+// import shovels from '../../public/cross-shovels.png';
+import shovels from '../../public/cross-shovels2.png';
+
 import Nav from "../components/Nav.astro"
 
 const { heading, title } = Astro.props;
@@ -27,8 +32,9 @@ const { heading, title } = Astro.props;
 		<main class="flex flex-col lg:w-3/4">
 			<slot />
 		</main>
-		<footer class="flex flex-row justify-center p-[1rem] w-[800px] md:w-[100%] lg:w-[100%]">
-			<span>Copyleft &copy; 2023 - Buddies Inc.</span>
+		<footer class="flex flex-col items-center justify-center p-[1rem] w-[800px] md:w-[100%] lg:w-[100%]">
+			<Image alt="shovel lol" class="w-[12vh]" src={shovels} />
+			<p class="text-xs">Copyleft &copy; 2023 - Buddies Inc.</p>
 		</footer>
 	</body>
 </html>

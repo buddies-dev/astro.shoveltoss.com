@@ -11,7 +11,9 @@ const gallery = images.gallery;
 			gallery.map((image, i) => {
 				return (
 					<div class="relative lg:overflow-hidden lg:max-h-[185px]">
-						<img class="h-full w-full lg:object-cover lg:object-center" src={image} />
+						<a target="_blank" href={image} title="Click to view in new tab.">
+							<img class="h-full w-full lg:object-cover lg:object-center" src={image} />
+						</a>
 					</div>
 				)
 			})

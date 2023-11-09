@@ -1,13 +1,15 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import shovel from '../../public/shovel-white.png';
 
 const currentYear = new Date().getFullYear();
 
 ---
 
-<Layout heading="Shoveltoss" title="Welcome to Shoveltoss.">
+<Layout heading="Shoveltoss 🍺" title="Welcome to Shoveltoss.">
 	<div class="text-center">
-		<p>Welcome to the official Shoveltoss website.</p>
+		<p class="text-lg">Welcome to the official Shoveltoss website.</p>
 	</div>
 	<div class="flex flex-row justify-center">
 		<img class="w-1/2 xl:w-[33vh] lg:w-[33vh]" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630897183/shoveltoss.com/new-gif_soend3.gif" />
@@ -18,7 +20,7 @@ const currentYear = new Date().getFullYear();
 		<p>With it's inaugural tournament in the summer of 2016, Shoveltoss is now in it it's {currentYear - 2016}th year and third venue!</p>
 	</div>
 	<div class="flex flex-row justify-center">
-		<img class="mt-4 lg:w-[50vh] lg:h-[50vh]" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898108/shoveltoss.com/05a78d71b6c1491199825af89d3a1154_qflxtq.jpg" />
+		<img class="mt-4 lg:w-[50vw]" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898108/shoveltoss.com/05a78d71b6c1491199825af89d3a1154_qflxtq.jpg" />
 	</div>
 </Layout>
 
