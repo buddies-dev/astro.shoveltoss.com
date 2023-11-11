@@ -7,47 +7,53 @@ import Card from '../components/Card.astro';
 <Layout heading="Champions 👑" title="Welcome to Astro.">
 	<div class="flex flex-col gap-8">
 		<Card>
-			<h2>2016 - Brian A. (1)</h2>
-			<p>The OG. A real pioneer. The George Washington of Shoveltoss, if you will.</p>
+			<div class="flex flex-col flex-[1] p-4">
+				<h2 class="text-lg font-semibold">2016 - Brian A. (1)</h2>
+				<p class="text-sm">The OG. A real pioneer. The George Washington of Shoveltoss, if you will.</p>
+			</div>
 		</Card>
 		<Card>
-			<h2>2017 - Alex E. (1)</h2>
-			<p>An absolute force. A legendary performance with coaching by the mastermind Joe.</p>
+			<div class="flex flex-col flex-[1] p-4">
+				<h2 class="text-lg font-semibold">2017 - Alex E. (1)</h2>
+				<p class="text-sm">An absolute force. A legendary performance with coaching by the mastermind Joe.</p>
+			</div>
 		</Card>
 		<Card>
-			<div class="flex flex-row">
-				<div class="flex flex-col flex-[1]">
-					<h2>2018 - Max V. (1)</h2>
-					<p>Winning in the sloppiest conditions on record make his success only more impressive.</p>
+			<div class="flex flex-col sm:flex-row">
+				<div class="flex flex-col flex-[1] p-4">
+					<h2 class="text-lg font-semibold">2018 - Max V. (1)</h2>
+					<p class="text-sm">Winning in the sloppiest conditions on record make his success only more impressive.</p>
 				</div>
-				<div class="flex flex-[1]">
+				<div class="flex flex-[1] overflow-hidden p-2">
 					<img src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630213818/shoveltoss.com/dc278719-609f-4a28-9c96-3df8cfae1ea0.jpg" />
 				</div>
 			</div>
 		</Card>
 		<Card direction="row">
-			<div class="flex flex-row">
-				<div class="flex flex-col flex-[1]">
-					<h2>2019 - Phil D. (1)</h2>
-					<p>Inaugural champion of the newest Shoveltoss venue. Second win for coach Joe. </p>
+			<div class="flex flex-col sm:flex-row">
+				<div class="flex flex-col lg:flex-col flex-[1] p-4">
+					<h2 class="text-lg font-semibold">2019 - Phil D. (1)</h2>
+					<p class="text-sm">Inaugural champion of the newest Shoveltoss venue. Second win for coach Joe. </p>
 				</div>
-				<div class="flex flex-[1] max-h-[285px] overflow-hidden">
-					<img class="w-full h-full object-cover object-center" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898121/shoveltoss.com/5738b77dcfad401e85ff70b877f35bf8_k2isey.jpg" />
+				<div class="flex flex-[1] max-h-[285px] overflow-hidden p-2">
+					<img class="w-full object-cover object-center" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898121/shoveltoss.com/5738b77dcfad401e85ff70b877f35bf8_k2isey.jpg" />
 				</div>
 			</div>
 		</Card>
 		<Card>
-			<h2>2021 - Nick P (1)</h2>
-			<p>First champion in the post-COVID era. Myocarditis and lung scarring are no match for a real champ.</p>
+			<div class="flex flex-col flex-[1] p-4">
+				<h2 class="text-lg font-semibold">2021 - Nick P (1)</h2>
+				<p class="text-sm">First champion in the post-COVID era. Myocarditis and lung scarring are no match for a real champ.</p>
+			</div>
 		</Card>
 		<Card direction="row">
-			<div class="flex flex-row">
-				<div class="flex flex-col flex-[1]">
-					<h2>2023 - Nick P. (2)</h2>
-					<p>Our first back to back champion. Chuggo is too nasty with it.</p>
+			<div class="flex flex-col sm:flex-row">
+				<div class="flex flex-col flex-[1] p-4">
+					<h2 class="text-lg font-semibold">2023 - Nick P. (2)</h2>
+					<p class="text-sm">Our first back to back champion. Chuggo is too nasty with it.</p>
 				</div>
-				<div class="flex flex-[1] max-h-[285px] overflow-hidden">
-					<img class="h-full w-full object-cover object-center" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1699066023/shoveltoss.com/IMG_4400_bewhqj.png" />
+				<div class="flex flex-[1] max-h-[285px] overflow-hidden p-2">
+					<img class="w-full object-cover object-center" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1699066023/shoveltoss.com/IMG_4400_bewhqj.png" />
 				</div>
 			</div>
 		</Card>
@@ -79,24 +85,6 @@ import Card from '../components/Card.astro';
 		-webkit-text-fill-color: transparent;
 		background-size: 400%;
 		background-position: 0%;
-	}
-	.instructions {
-		margin-bottom: 2rem;
-		border: 1px solid rgba(var(--accent-light), 25%);
-		background: linear-gradient(rgba(var(--accent-dark), 66%), rgba(var(--accent-dark), 33%));
-		padding: 1.5rem;
-		border-radius: 8px;
-	}
-	.instructions code {
-		font-size: 0.8em;
-		font-weight: bold;
-		background: rgba(var(--accent-light), 12%);
-		color: rgb(var(--accent-light));
-		border-radius: 4px;
-		padding: 0.3em 0.4em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent-light));
 	}
 	.link-card-grid {
 		display: grid;

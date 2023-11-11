@@ -5,8 +5,6 @@ interface Props {
 }
 
 import { Image } from 'astro:assets';
-import shovel from '../../public/shovel-white.png';
-// import shovels from '../../public/cross-shovels.png';
 import shovels from '../../public/cross-shovels2.png';
 
 import Nav from "../components/Nav.astro"
@@ -24,17 +22,17 @@ const { heading, title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<div class="p-[1rem] w-[800px] md:w-[100%] lg:w-[100%]">
-			<h1>{heading}</h1>
+	<body class="flex flex-col">
+		<header class="flex flex-col sm:w-[100%]">
+			<h1 class="text-3xl sm:leading-none sm:text-[4rem] sm:p-4">{heading}</h1>
 			<Nav currentPage={heading} />
-		</div>
-		<main class="flex flex-col lg:w-3/4">
+		</header>
+		<main class="flex flex-col">
 			<slot />
 		</main>
-		<footer class="flex flex-col items-center justify-center p-[1rem] w-[800px] md:w-[100%] lg:w-[100%]">
+		<footer class="flex flex-col items-center justify-center p-2 sm:w-[100%] gap-1">
 			<Image alt="shovel lol" class="w-[12vh]" src={shovels} />
-			<p class="text-xs">Copyleft &copy; 2023 - Buddies Inc.</p>
+			<p class="text-xs">Shoveltoss &copy; 2023 - Buddies Inc.</p>
 		</footer>
 	</body>
 </html>
@@ -71,12 +69,12 @@ const { heading, title } = Astro.props;
 	main {
 		margin: auto;
 		padding: 1rem;
-		width: 800px;
+		/* width: 800px; */
 		/* max-width: calc(100% - 2rem); */
 		line-height: 1.6;
 	}
 	h1 {
-		font-size: 4rem;
+		font-size: 3rem;
 		font-weight: 700;
 		line-height: 1;
 		text-align: center;

@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import images from '../../public/images.json';
 
@@ -7,7 +8,18 @@ const gallery = images.shop;
 
 <Layout heading="Merch 🧢" title="Welcome to Astro.">
 	{
-		gallery.map((image) => <img class="lg:max-h-[50h]" src={image} /> )
+		gallery.map((image: string) => {
+			return (
+				<Image
+					height="500"
+					width="500"
+					alt="merch"
+					loading="lazy"
+					class="lg:max-w-[50vh] self-center rounded-md"
+					src={image}
+				/>
+			)
+		})
 	}
 </Layout>
 

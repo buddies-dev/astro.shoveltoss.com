@@ -4,28 +4,11 @@ interface Props {
 	direction?: string;
 }
 
-const { icon, direction = "column" } = Astro.props;
-
 ---
 
-{
-	direction === "row" &&
-	<div class="link-card p-8 flex flex-row relative ">
-		<div class="flex flex-row justify-end absolute top-0 right-2">
-			{icon}
-		</div>
-		<slot />
-	</div>
-}
-{
-	direction === "column" &&
-	<div class="link-card p-8 flex flex-col relative ">
-		<div class="flex flex-row justify-end absolute top-0 right-2">
-			{icon}
-		</div>
-		<slot />
-	</div>
-}
+<div class="link-card relative ">
+	<slot />
+</div>
 
 <style>
 	.link-card {
