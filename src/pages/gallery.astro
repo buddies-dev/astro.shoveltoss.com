@@ -1,6 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import images from '../../public/images.json';
+import { Image } from 'astro:assets';
+import Layout from '@layouts/Layout.astro';
+import images from '@public/images.json';
 
 const gallery = images.gallery;
 ---
@@ -12,7 +13,13 @@ const gallery = images.gallery;
 				return (
 					<div class="relative lg:overflow-hidden lg:max-h-[185px]">
 						<a target="_blank" href={image} title="Click to view in new tab.">
-							<img class="h-full w-full lg:object-cover lg:object-center rounded-md" src={image} />
+							<Image
+								alt="Gallery image"
+								height="500"
+								width="500"
+								class="h-full w-full lg:object-cover lg:object-center rounded-md"
+								src={image}
+							/>
 						</a>
 					</div>
 				)
