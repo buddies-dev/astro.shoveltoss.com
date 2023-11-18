@@ -1,7 +1,7 @@
 {
   "name": "astro.shoveltoss.com",
   "type": "module",
-  "version": "0.0.1",
+  "version": "2023.11.17",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
