@@ -8,6 +8,7 @@ import { Image } from 'astro:assets';
 import shovels from '@public/cross-shovels2.png';
 
 import Nav from "@components/Nav.astro"
+import { ViewTransitions } from 'astro:transitions';
 
 const { heading, title } = Astro.props;
 ---
@@ -21,6 +22,7 @@ const { heading, title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ViewTransitions />
 		<script async src="https://us.umami.is/script.js" data-website-id="24cddf39-bdf1-46c4-97bd-64faa0f48d77"></script>
 	</head>
 	<body class="flex flex-col">
