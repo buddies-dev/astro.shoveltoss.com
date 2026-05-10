@@ -116,11 +116,12 @@ export const navLinks = [
   { href: '/gallery',   label: 'Gallery' },
   { href: '/champions', label: 'Champions' },
   { href: '/merch',     label: 'Merch' },
-  { href: 'https://maxrickettsuy.github.io/shoveltoss-game/', label: 'Game 🔗', external: true },
 ] as const;
+
+export const gameUrl = 'https://shoveltoss.ing';
 ```
 
-Tiny refactor, but it's the *only* file you touch when adding a route — a real friction point flagged in `CLAUDE.md`.
+Tiny refactor, but it's the *only* file you touch when adding a route — a real friction point flagged in `CLAUDE.md`. The game URL lives here too so the landing-page CTA and any future "Play" buttons share one constant.
 
 ## 5. What to keep an eye on
 

@@ -63,7 +63,10 @@ Edit `src/layouts/Layout.astro`:
 - Delete the `<style is:global>` block entirely. Move what survives into `global.css` (the `code` font-family is already covered by Tailwind's `font-mono`; the `main` override is replaced below).
 - Body becomes `class="flex min-h-dvh flex-col bg-[--color-bg] text-[--color-fg]"`.
 - Wrap `<slot />` in a centered container: `<main class="mx-auto w-full max-w-3xl flex-1 px-4 py-6 sm:px-6 sm:py-10">`. `max-w-3xl` (48rem / 768px) replaces the old `width: 800px`.
-- Header: stop letting the heading dominate vertical space on mobile. Use `text-xl sm:text-3xl` for `<h1>` and a tighter `py-3 sm:py-6`.
+- Header: stop letting the heading dominate vertical space on mobile. The current header takes ~30% of the mobile viewport before any content shows. New rules:
+  - `<header>` becomes `class="flex flex-col items-center gap-2 px-4 py-3 sm:gap-4 sm:py-6"` — explicit gap between `<h1>` and `<Nav>` instead of the current implicit margin collapse.
+  - `<h1>` becomes `class="text-2xl leading-tight sm:text-4xl"` — drops mobile from `text-3xl` to `text-2xl`, kills the `sm:text-[4rem]` arbitrary value, and `leading-tight` shaves another few px.
+  - The header has no border or background — it should feel continuous with the page. Add `border-b border-white/5` only if the visual hierarchy reads ambiguously after the rest of Plan 02 lands.
 - Drop the `<Image src={shovels}>` in the footer to a smaller `h-16 sm:h-20` and add `loading="lazy"`. (Plan 03 covers image specifics.)
 
 ## 3. Page-by-page rewrite
@@ -76,6 +79,24 @@ The shared rules: vertical rhythm uses `space-y-6` on the page root for sections
 - Remove the duplicate mobile-only sprite row at lines 40–44. One decorative element per breakpoint, not three.
 - Hero GIFs (lines 22–29): give explicit `width`/`height` (Cloudinary returns whatever size is requested; pick something like 240×240 each) so the browser can reserve space — see Plan 03.
 - Body copy: `text-base text-[--color-fg-muted]`.
+- **Add a "Play the game" promo block.** The Game link is being removed from the nav (see Nav.astro below) and gets prime real estate on the landing page instead. Place it after the hero, before the "Shoveltoss is a phenomena…" copy:
+
+  ```astro
+  <a
+    href="https://shoveltoss.ing"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="group mx-auto flex w-full max-w-md items-center justify-between gap-4 rounded-lg bg-[--color-surface] px-5 py-4 ring-1 ring-white/10 transition hover:ring-[--color-accent]"
+  >
+    <div class="flex flex-col">
+      <span class="text-lg font-semibold">Play Shoveltoss</span>
+      <span class="text-sm text-[--color-fg-muted]">Try the browser game at shoveltoss.ing</span>
+    </div>
+    <span class="text-2xl transition group-hover:translate-x-0.5">🎮</span>
+  </a>
+  ```
+
+  The shape (full-width tappable card, label + arrow/icon, hover state on the ring) makes it feel like a primary CTA without needing a heavier "button" component.
 
 ### `src/pages/rules.astro`
 
@@ -103,24 +124,43 @@ The shared rules: vertical rhythm uses `space-y-6` on the page root for sections
 
 ### `src/components/Nav.astro`
 
-After Plan 01 fixed the malformed HTML, restyle the nav as a single horizontal bar:
+After Plan 01 fixed the malformed HTML, restyle the nav as a single horizontal bar with breathing room on mobile:
 
 ```astro
-<nav class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-base">
-  {links.map(({ href, label, external }) => (
+---
+const links = [
+  { href: '/',          label: 'Home' },
+  { href: '/rules',     label: 'Rules' },
+  { href: '/gallery',   label: 'Gallery' },
+  { href: '/champions', label: 'Champions' },
+  { href: '/merch',     label: 'Merch' },
+];
+---
+<nav class="flex flex-wrap justify-center gap-x-5 gap-y-1 text-base sm:gap-x-6">
+  {links.map(({ href, label }) => (
     <a
       href={href}
       class:list={[
-        "underline-offset-4 hover:underline",
+        "py-1 underline-offset-4 hover:underline",
         Astro.url.pathname === href && "underline"
       ]}
-      {...external && { target: "_blank", rel: "noopener noreferrer" }}
     >{label}</a>
   ))}
 </nav>
 ```
 
-A `links` array at the top of the component frontmatter is the source of truth — adding a route in the future means editing one array, not threading through the layout. This also kills the `currentPage` prop entirely (Plan 01 already removed it).
+Mobile spacing notes (the thing that prompted this change):
+- `gap-x-5` (1.25rem) between links on mobile, bumped to `gap-x-6` on `sm:`. Current `gap-2`/`gap-4` is too cramped for tap targets.
+- `gap-y-1` so wrapped links don't pile on top of each other.
+- `py-1` on each `<a>` enlarges the tap target vertically without affecting visual layout — important for thumbs.
+- The `text-sm sm:text-base` size step the current Nav uses is dropped: `text-base` everywhere is fine and easier to hit.
+
+**Game link is removed.** It now lives as a CTA block on the landing page (see `index.astro` above) pointing at `https://shoveltoss.ing`. Reasons:
+- Mixing internal routes with an external link in the same nav row created an awkward 6th item that wrapped on mobile and pulled focus from the actual site sections.
+- The game is a feature worth promoting, not a footnote — landing-page CTA gets it more clicks.
+- Active-link logic via `Astro.url.pathname` matches site routes only; the external URL never matched anything anyway.
+
+A `links` array at the top of the component frontmatter is the source of truth — adding a route means editing one array. Plan 04 moves this array to `src/lib/nav.ts` so it can be shared with a footer-nav or sitemap if those ever exist. The `currentPage` prop is gone (Plan 01 removed it).
 
 ## Verification
 
