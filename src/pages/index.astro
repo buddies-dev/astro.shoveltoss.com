@@ -9,43 +9,52 @@ const currentYear = new Date().getFullYear();
 ---
 
 <Layout heading="Shoveltoss 🍺" title="Welcome to Shoveltoss.">
-	<div class="text-center">
-		<p class="text-lg">Welcome to the official Shoveltoss website.</p>
-	</div>
-	<div class="flex flex-row justify-center sm:justify-between px-2">
-		<div class="flex flex-col align-center">
-			<Image alt="chuggo" class="invisible w-0 sm:visible sm:w-auto sm:h-[10vw]" src={chuggo} />
-			<Image alt="shrek" class="invisible w-0 sm:visible sm:w-auto sm:h-[10vw]" src={shrek} />
-			<Image alt="lucha" class="invisible w-0 sm:visible sm:w-auto sm:h-[10vw]" src={lucha} />
-		</div>
-		<div class="flex flex-row w-1/2 sm:w-[33vh] justify-center">
-			<img
-				class="rounded-l-md"
-				src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630897183/shoveltoss.com/new-gif_soend3.gif"
-			/>
-			<img
-				class="rounded-r-md"
-				src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630897147/shoveltoss.com/new-gif_z5tflr.gif"
-			/>
-		</div>
-		<div class="flex flex-col align-center">
-			<Image alt="chuggo" class="invisible w-0 sm:visible sm:w-auto sm:h-[10vw]" src={chuggo} />
-			<Image alt="shrek" class="invisible w-0 sm:visible sm:w-auto sm:h-[10vw]" src={shrek} />
-			<Image alt="lucha" class="invisible w-0 sm:visible sm:w-auto sm:h-[10vw]" src={lucha} />
-		</div>
-	</div>
-	<div class="flex flex-col sm:flex-row p-4">
-		<div class="flex flex-col flex-[1] text-md sm:pl-10 sm:pt-10 sm:justify-center">
-			<p class="text-sm m-4">Shoveltoss is a phenomena manifested in the heart of Little Italy by two boys and the dream of a better shovel-based pastime.</p>
-			<div class="flex flex-row align-center sm:invisible sm:w-0">
-				<Image alt="chuggo" class="h-[10vh]" src={chuggo} />
-				<Image alt="shrek" class="h-[10vh]" src={shrek} />
-				<Image alt="lucha" class="h-[10vh]" src={lucha} />
+	<div class="space-y-6">
+		<div class="space-y-3 text-center">
+			<p class="text-lg">Welcome to the official Shoveltoss website.</p>
+			<div class="hidden justify-center gap-4 sm:flex">
+				<Image alt="" class="h-16 w-auto" src={chuggo} />
+				<Image alt="" class="h-16 w-auto" src={shrek} />
+				<Image alt="" class="h-16 w-auto" src={lucha} />
 			</div>
-			<p class="text-sm m-4">With it's inaugural tournament in the summer of 2016, Shoveltoss is going strong in it's {currentYear - 2016}th year and third venue!</p>
 		</div>
-		<div class="flex flex-col justify-center pr-2 pt-2 sm:pr-10 sm:pt-10">
-			<img class="sm:max-w-[50vw] rounded-md" alt="buddies" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898108/shoveltoss.com/05a78d71b6c1491199825af89d3a1154_qflxtq.jpg" />
+
+		<div class="mx-auto flex w-full max-w-sm justify-center">
+			<img
+				class="aspect-square w-1/2 rounded-l-md object-cover"
+				src="https://res.cloudinary.com/shoveltoss-com/image/upload/c_fill,h_240,w_240/v1630897183/shoveltoss.com/new-gif_soend3.gif"
+				alt=""
+				width="240"
+				height="240"
+			/>
+			<img
+				class="aspect-square w-1/2 rounded-r-md object-cover"
+				src="https://res.cloudinary.com/shoveltoss-com/image/upload/c_fill,h_240,w_240/v1630897147/shoveltoss.com/new-gif_z5tflr.gif"
+				alt=""
+				width="240"
+				height="240"
+			/>
+		</div>
+
+		<a
+			href="https://shoveltoss.ing"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="group mx-auto flex w-full max-w-md items-center justify-between gap-4 rounded-lg bg-[--color-surface] px-5 py-4 ring-1 ring-white/10 transition hover:ring-[--color-accent]"
+		>
+			<div class="flex flex-col">
+				<span class="text-lg font-semibold">Play Shoveltoss</span>
+				<span class="text-sm text-[--color-fg-muted]">Try the browser game at shoveltoss.ing</span>
+			</div>
+			<span class="text-2xl transition group-hover:translate-x-0.5">🎮</span>
+		</a>
+
+		<div class="grid gap-6 sm:grid-cols-2 sm:items-center">
+			<div class="space-y-3">
+				<p class="text-base text-[--color-fg-muted]">Shoveltoss is a phenomena manifested in the heart of Little Italy by two boys and the dream of a better shovel-based pastime.</p>
+				<p class="text-base text-[--color-fg-muted]">With it's inaugural tournament in the summer of 2016, Shoveltoss is going strong in it's {currentYear - 2016}th year and third venue!</p>
+			</div>
+			<img class="rounded-md" alt="buddies" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898108/shoveltoss.com/05a78d71b6c1491199825af89d3a1154_qflxtq.jpg" />
 		</div>
 	</div>
 </Layout>

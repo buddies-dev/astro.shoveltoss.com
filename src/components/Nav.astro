@@ -1,10 +1,23 @@
-<div class="flex flex-row justify-center gap-2 text-sm sm:text-base sm:gap-4 m-1">
-  <a class="no-underline! hover:underline!" href="/">Home</a>
-	<a class="no-underline! hover:underline!" href="/rules">Rules</a>
-  <a class="no-underline! hover:underline!" href="/gallery">Gallery</a>
-  <a class="no-underline! hover:underline!" href="/champions">Champions</a>
-  <a class="no-underline! hover:underline!" href="/merch">Merch</a>
-	<a class="no-underline! hover:underline!" href="https://maxrickettsuy.github.io/shoveltoss-game/" target="_blank" rel="noopener noreferrer" class="">
-		Game 🔗
-	</a>
-</div>
+---
+const links = [
+	{ href: '/', label: 'Home' },
+	{ href: '/rules', label: 'Rules' },
+	{ href: '/gallery', label: 'Gallery' },
+	{ href: '/champions', label: 'Champions' },
+	{ href: '/merch', label: 'Merch' },
+];
+---
+
+<nav class="flex flex-wrap justify-center gap-x-5 gap-y-1 text-base sm:gap-x-6">
+	{links.map(({ href, label }) => (
+		<a
+			href={href}
+			class:list={[
+				"py-1 underline-offset-4 hover:underline",
+				Astro.url.pathname === href && "underline"
+			]}
+		>
+			{label}
+		</a>
+	))}
+</nav>
