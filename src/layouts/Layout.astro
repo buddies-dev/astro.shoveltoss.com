@@ -18,7 +18,7 @@ const { heading, title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="Shoveltoss — the shovel-based pastime. Rules, champions, gallery, and merch." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍺</text></svg>">
 		<meta name="generator" content={Astro.generator} />
@@ -29,7 +29,7 @@ const { heading, title } = Astro.props;
 	<body class="flex flex-col">
 		<header class="flex flex-col sm:w-[100%]">
 			<h1 class="text-3xl sm:leading-none sm:text-[4rem] sm:p-4">{heading}</h1>
-			<Nav currentPage={heading} />
+			<Nav />
 		</header>
 		<main class="flex flex-col">
 			<slot />
@@ -41,17 +41,6 @@ const { heading, title } = Astro.props;
 	</body>
 </html>
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
 	html {
 		font-family: system-ui, sans-serif;
 		background: #13151a;

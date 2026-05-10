@@ -28,7 +28,7 @@ import Card from '@components/Card.astro';
 				</div>
 			</div>
 		</Card>
-		<Card direction="row">
+		<Card>
 			<div class="flex flex-col sm:flex-row">
 				<div class="flex flex-col lg:flex-col flex-[1] p-4">
 					<h2 class="text-lg font-semibold">2019 - Phil D. (1)</h2>
@@ -45,7 +45,7 @@ import Card from '@components/Card.astro';
 				<p class="text-sm">First champion in the post-COVID era. Myocarditis and lung scarring are no match for a real champ.</p>
 			</div>
 		</Card>
-		<Card direction="row">
+		<Card>
 			<div class="flex flex-col sm:flex-row">
 				<div class="flex flex-col flex-[1] p-4">
 					<h2 class="text-lg font-semibold">2023 - Nick P. (2)</h2>
@@ -58,37 +58,3 @@ import Card from '@components/Card.astro';
 		</Card>
 	</div>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	.astro-a {
-		position: absolute;
-		top: -32px;
-		left: 50%;
-		transform: translatex(-50%);
-		width: 220px;
-		height: auto;
-		z-index: -1;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
-</style>
