@@ -1,8 +1,8 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import ImageTile from '@components/ImageTile.astro';
 import images from '@public/images.json';
 import { Icon } from 'astro-icon/components';
-import { cld, srcset } from '../lib/cloudinary';
 
 const gallery = images.gallery;
 ---
@@ -12,24 +12,7 @@ const gallery = images.gallery;
 		{
 			gallery.map((image) => {
 				return (
-					<div class="aspect-[4/3] overflow-hidden rounded-md">
-						<button class="group relative block h-full w-full cursor-pointer text-left" type="button" data-gallery-image={image} aria-label="Open gallery image">
-							<img
-								src={cld(image, { w: 600, c: 'fill', ar: '4:3' })}
-								srcset={srcset(image, [400, 600, 800, 1200], { c: 'fill', ar: '4:3' })}
-								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-								alt="Gallery image"
-								height="450"
-								width="600"
-								class="h-full w-full object-cover object-center"
-								loading="lazy"
-								decoding="async"
-							/>
-							<span class="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md bg-black/60 text-white opacity-90 ring-1 ring-white/20 transition group-hover:bg-black/75 group-hover:opacity-100" aria-hidden="true">
-								<Icon name="lucide:expand" class="h-4 w-4" />
-							</span>
-						</button>
-					</div>
+					<ImageTile src={image} alt="Gallery image" lightbox />
 				)
 			})
 		}

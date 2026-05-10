@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import { cld, srcset } from '../lib/cloudinary';
+import { gameUrl } from '../lib/nav';
 
 const currentYear = new Date().getFullYear();
 const heroGif1 = 'https://res.cloudinary.com/shoveltoss-com/image/upload/v1630897183/shoveltoss.com/new-gif_soend3.gif';
@@ -50,7 +51,7 @@ const heroSizes = '(min-width: 768px) 12rem, 50vw';
 		</div>
 
 		<a
-			href="https://shoveltoss.ing"
+			href={gameUrl}
 			target="_blank"
 			rel="noopener noreferrer"
 			class="group mx-auto flex w-full max-w-md items-center justify-between gap-4 rounded-lg bg-[--color-surface] px-5 py-4 ring-1 ring-white/10 transition hover:ring-[--color-accent]"

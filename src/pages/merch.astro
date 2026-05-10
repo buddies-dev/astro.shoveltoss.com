@@ -1,7 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
+import ImageTile from '@components/ImageTile.astro';
 import images from '@public/images.json';
-import { cld, srcset } from '../lib/cloudinary';
 
 const gallery = images.shop;
 ---
@@ -11,17 +11,7 @@ const gallery = images.shop;
 		{
 			gallery.map((image: string) => {
 				return (
-					<img
-						src={cld(image, { w: 800 })}
-						srcset={srcset(image, [400, 800, 1200])}
-						sizes="(min-width: 640px) 50vw, 100vw"
-						height="800"
-						width="800"
-						alt="merch"
-						loading="lazy"
-						decoding="async"
-						class="w-full rounded-md"
-					/>
+					<ImageTile src={image} alt="Merch" aspect="1:1" />
 				)
 			})
 		}

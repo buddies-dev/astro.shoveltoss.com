@@ -1,0 +1,34 @@
+---
+import { cld, srcset } from '../lib/cloudinary';
+
+interface Props {
+	year: number | string;
+	name: string;
+	titles: number;
+	image?: string;
+}
+
+const { year, name, titles, image } = Astro.props;
+---
+
+<article class="flex flex-col overflow-hidden rounded-md bg-[--color-surface] ring-1 ring-white/10 sm:flex-row">
+	<div class="flex-1 space-y-2 p-4">
+		<h2 class="text-lg font-semibold">{year} - {name} ({titles})</h2>
+		<p class="text-base text-[--color-fg-muted]"><slot /></p>
+	</div>
+	{image && (
+		<div class="aspect-[4/3] overflow-hidden sm:flex-1">
+			<img
+				src={cld(image, { w: 600, c: 'fill', ar: '4:3' })}
+				srcset={srcset(image, [400, 600, 800], { c: 'fill', ar: '4:3' })}
+				sizes="(min-width: 640px) 50vw, 100vw"
+				alt={`${name} ${year}`}
+				loading="lazy"
+				decoding="async"
+				width="600"
+				height="450"
+				class="h-full w-full object-cover"
+			/>
+		</div>
+	)}
+</article>

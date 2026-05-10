@@ -1,15 +1,9 @@
 ---
-const links = [
-	{ href: '/', label: 'Home' },
-	{ href: '/rules', label: 'Rules' },
-	{ href: '/gallery', label: 'Gallery' },
-	{ href: '/champions', label: 'Champions' },
-	{ href: '/merch', label: 'Merch' },
-];
+import { navLinks } from '../lib/nav';
 ---
 
 <nav class="flex flex-wrap justify-center gap-x-5 gap-y-1 text-base sm:gap-x-6">
-	{links.map(({ href, label }) => (
+	{navLinks.map(({ href, label }) => (
 		<a
 			href={href}
 			class:list={[

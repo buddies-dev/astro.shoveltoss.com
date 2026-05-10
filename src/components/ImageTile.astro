@@ -1,0 +1,51 @@
+---
+import { Icon } from 'astro-icon/components';
+import { cld, srcset } from '../lib/cloudinary';
+
+interface Props {
+	src: string;
+	alt: string;
+	aspect?: '4:3' | '1:1';
+	lightbox?: boolean;
+}
+
+const { src, alt, aspect = '4:3', lightbox = false } = Astro.props;
+const isSquare = aspect === '1:1';
+const height = isSquare ? 800 : 450;
+const sizes = isSquare ? '(min-width: 640px) 50vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw';
+const width = isSquare ? 800 : 600;
+const widths = isSquare ? [400, 800, 1200] : [400, 600, 800, 1200];
+---
+
+<div class:list={[isSquare ? 'aspect-square' : 'aspect-[4/3]', 'overflow-hidden rounded-md']}>
+	{lightbox ? (
+		<button class="group relative block h-full w-full cursor-pointer text-left" type="button" data-gallery-image={src} aria-label={`Open ${alt}`}>
+			<img
+				src={cld(src, { w: width, c: 'fill', ar: aspect })}
+				srcset={srcset(src, widths, { c: 'fill', ar: aspect })}
+				sizes={sizes}
+				alt={alt}
+				height={height}
+				width={width}
+				class="h-full w-full object-cover object-center"
+				loading="lazy"
+				decoding="async"
+			/>
+			<span class="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md bg-black/60 text-white opacity-90 ring-1 ring-white/20 transition group-hover:bg-black/75 group-hover:opacity-100" aria-hidden="true">
+				<Icon name="lucide:expand" class="h-4 w-4" />
+			</span>
+		</button>
+	) : (
+		<img
+			src={cld(src, { w: width, c: 'fill', ar: aspect })}
+			srcset={srcset(src, widths, { c: 'fill', ar: aspect })}
+			sizes={sizes}
+			alt={alt}
+			height={height}
+			width={width}
+			class="h-full w-full object-cover object-center"
+			loading="lazy"
+			decoding="async"
+		/>
+	)}
+</div>

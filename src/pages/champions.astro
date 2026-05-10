@@ -1,7 +1,6 @@
 ---
 import Layout from '@layouts/Layout.astro';
-import Card from '@components/Card.astro';
-import { cld, srcset } from '../lib/cloudinary';
+import ChampionCard from '@components/ChampionCard.astro';
 
 const max2018 = 'https://res.cloudinary.com/shoveltoss-com/image/upload/v1630213818/shoveltoss.com/dc278719-609f-4a28-9c96-3df8cfae1ea0.jpg';
 const phil2019 = 'https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898121/shoveltoss.com/5738b77dcfad401e85ff70b877f35bf8_k2isey.jpg';
@@ -10,86 +9,23 @@ const nick2023 = 'https://res.cloudinary.com/shoveltoss-com/image/upload/v169906
 
 <Layout heading="Champions 👑" title="Welcome to Astro.">
 	<div class="space-y-6">
-		<Card>
-			<div class="flex flex-col flex-[1] space-y-2 p-4">
-				<h2 class="text-lg font-semibold">2016 - Brian A. (1)</h2>
-				<p class="text-base text-[--color-fg-muted]">The OG. A real pioneer. The George Washington of Shoveltoss, if you will.</p>
-			</div>
-		</Card>
-		<Card>
-			<div class="flex flex-col flex-[1] space-y-2 p-4">
-				<h2 class="text-lg font-semibold">2017 - Alex E. (1)</h2>
-				<p class="text-base text-[--color-fg-muted]">An absolute force. A legendary performance with coaching by the mastermind Joe.</p>
-			</div>
-		</Card>
-		<Card>
-			<div class="flex flex-col sm:flex-row">
-				<div class="flex flex-col flex-[1] space-y-2 p-4">
-					<h2 class="text-lg font-semibold">2018 - Max V. (1)</h2>
-					<p class="text-base text-[--color-fg-muted]">Winning in the sloppiest conditions on record make his success only more impressive.</p>
-				</div>
-				<div class="aspect-[4/3] flex-[1] overflow-hidden">
-					<img
-						class="h-full w-full object-cover"
-						src={cld(max2018, { w: 600, c: 'fill', ar: '4:3' })}
-						srcset={srcset(max2018, [400, 600, 800], { c: 'fill', ar: '4:3' })}
-						sizes="(min-width: 640px) 50vw, 100vw"
-						alt="Max V. 2018"
-						loading="lazy"
-						decoding="async"
-						width="600"
-						height="450"
-					/>
-				</div>
-			</div>
-		</Card>
-		<Card>
-			<div class="flex flex-col sm:flex-row">
-				<div class="flex flex-col flex-[1] space-y-2 p-4">
-					<h2 class="text-lg font-semibold">2019 - Phil D. (1)</h2>
-					<p class="text-base text-[--color-fg-muted]">Inaugural champion of the newest Shoveltoss venue. Second win for coach Joe. </p>
-				</div>
-				<div class="aspect-[4/3] flex-[1] overflow-hidden">
-					<img
-						class="h-full w-full object-cover object-center"
-						src={cld(phil2019, { w: 600, c: 'fill', ar: '4:3' })}
-						srcset={srcset(phil2019, [400, 600, 800], { c: 'fill', ar: '4:3' })}
-						sizes="(min-width: 640px) 50vw, 100vw"
-						alt="Phil D. 2019"
-						loading="lazy"
-						decoding="async"
-						width="600"
-						height="450"
-					/>
-				</div>
-			</div>
-		</Card>
-		<Card>
-			<div class="flex flex-col flex-[1] space-y-2 p-4">
-				<h2 class="text-lg font-semibold">2021 - Nick P (1)</h2>
-				<p class="text-base text-[--color-fg-muted]">First champion in the post-COVID era. Myocarditis and lung scarring are no match for a real champ.</p>
-			</div>
-		</Card>
-		<Card>
-			<div class="flex flex-col sm:flex-row">
-				<div class="flex flex-col flex-[1] space-y-2 p-4">
-					<h2 class="text-lg font-semibold">2023 - Nick P. (2)</h2>
-					<p class="text-base text-[--color-fg-muted]">Our first back to back champion. Chuggo is too nasty with it.</p>
-				</div>
-				<div class="aspect-[4/3] flex-[1] overflow-hidden">
-					<img
-						class="h-full w-full object-cover object-center"
-						src={cld(nick2023, { w: 600, c: 'fill', ar: '4:3' })}
-						srcset={srcset(nick2023, [400, 600, 800], { c: 'fill', ar: '4:3' })}
-						sizes="(min-width: 640px) 50vw, 100vw"
-						alt="Nick P. 2023"
-						loading="lazy"
-						decoding="async"
-						width="600"
-						height="450"
-					/>
-				</div>
-			</div>
-		</Card>
+		<ChampionCard year={2016} name="Brian A." titles={1}>
+			The OG. A real pioneer. The George Washington of Shoveltoss, if you will.
+		</ChampionCard>
+		<ChampionCard year={2017} name="Alex E." titles={1}>
+			An absolute force. A legendary performance with coaching by the mastermind Joe.
+		</ChampionCard>
+		<ChampionCard year={2018} name="Max V." titles={1} image={max2018}>
+			Winning in the sloppiest conditions on record make his success only more impressive.
+		</ChampionCard>
+		<ChampionCard year={2019} name="Phil D." titles={1} image={phil2019}>
+			Inaugural champion of the newest Shoveltoss venue. Second win for coach Joe.
+		</ChampionCard>
+		<ChampionCard year={2021} name="Nick P" titles={1}>
+			First champion in the post-COVID era. Myocarditis and lung scarring are no match for a real champ.
+		</ChampionCard>
+		<ChampionCard year={2023} name="Nick P." titles={2} image={nick2023}>
+			Our first back to back champion. Chuggo is too nasty with it.
+		</ChampionCard>
 	</div>
 </Layout>
