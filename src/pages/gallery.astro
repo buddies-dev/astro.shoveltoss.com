@@ -1,6 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro';
 import images from '@public/images.json';
+import { Icon } from 'astro-icon/components';
 import { cld, srcset } from '../lib/cloudinary';
 
 const gallery = images.gallery;
@@ -12,7 +13,7 @@ const gallery = images.gallery;
 			gallery.map((image) => {
 				return (
 					<div class="aspect-[4/3] overflow-hidden rounded-md">
-						<a class="block h-full w-full" target="_blank" rel="noopener noreferrer" href={image} title="Click to view in new tab.">
+						<button class="group relative block h-full w-full cursor-pointer text-left" type="button" data-gallery-image={image} aria-label="Open gallery image">
 							<img
 								src={cld(image, { w: 600, c: 'fill', ar: '4:3' })}
 								srcset={srcset(image, [400, 600, 800, 1200], { c: 'fill', ar: '4:3' })}
@@ -24,10 +25,50 @@ const gallery = images.gallery;
 								loading="lazy"
 								decoding="async"
 							/>
-						</a>
+							<span class="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-md bg-black/60 text-white opacity-90 ring-1 ring-white/20 transition group-hover:bg-black/75 group-hover:opacity-100" aria-hidden="true">
+								<Icon name="lucide:expand" class="h-4 w-4" />
+							</span>
+						</button>
 					</div>
 				)
 			})
 		}
 	</div>
+
+	<dialog id="gallery-dialog" class="m-auto max-h-[calc(100dvh-2rem)] max-w-[calc(100vw-2rem)] overflow-hidden rounded-md bg-transparent p-0 backdrop:bg-black/80">
+		<div class="relative">
+			<img id="gallery-dialog-image" class="max-h-[calc(100dvh-2rem)] max-w-[calc(100vw-2rem)] rounded-md object-contain" alt="Expanded gallery image" />
+			<button class="absolute right-2 top-2 flex h-9 w-9 items-center justify-center rounded-md bg-black/70 text-white ring-1 ring-white/20 transition hover:bg-black/85" type="button" data-gallery-close aria-label="Close gallery image">
+				<Icon name="lucide:x" class="h-5 w-5" />
+			</button>
+		</div>
+	</dialog>
 </Layout>
+
+<script>
+	const dialog = document.querySelector<HTMLDialogElement>('#gallery-dialog');
+	const dialogImage = document.querySelector<HTMLImageElement>('#gallery-dialog-image');
+	const closeButton = document.querySelector<HTMLButtonElement>('[data-gallery-close]');
+
+	document.querySelectorAll<HTMLButtonElement>('[data-gallery-image]').forEach((button) => {
+		button.addEventListener('click', () => {
+			if (!dialog || !dialogImage) return;
+
+			const image = button.dataset.galleryImage;
+			if (!image) return;
+
+			dialogImage.src = image;
+			dialog.showModal();
+		});
+	});
+
+	closeButton?.addEventListener('click', () => {
+		dialog?.close();
+	});
+
+	dialog?.addEventListener('click', (event) => {
+		if (event.target === dialog) {
+			dialog.close();
+		}
+	});
+</script>
