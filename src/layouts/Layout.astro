@@ -2,16 +2,18 @@
 interface Props {
 	title: string;
 	heading: string;
+	lcpImage?: {
+		src: string;
+		srcset: string;
+		sizes: string;
+	};
 }
-
-import { Image } from 'astro:assets';
-import shovels from '@public/cross-shovels2.png';
 
 import Nav from "@components/Nav.astro"
 import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
-const { heading, title } = Astro.props;
+const { heading, lcpImage, title } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,6 +24,16 @@ const { heading, title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍺</text></svg>">
 		<meta name="generator" content={Astro.generator} />
+		{lcpImage && (
+			<link
+				rel="preload"
+				as="image"
+				href={lcpImage.src}
+				imagesrcset={lcpImage.srcset}
+				imagesizes={lcpImage.sizes}
+				fetchpriority="high"
+			/>
+		)}
 		<title>{title}</title>
 		<ClientRouter />
 		<script is:inline async src="https://us.umami.is/script.js" data-website-id="24cddf39-bdf1-46c4-97bd-64faa0f48d77"></script>
@@ -35,8 +47,7 @@ const { heading, title } = Astro.props;
 			<slot />
 		</main>
 		<footer class="flex flex-col items-center justify-center gap-1 p-2">
-			<Image alt="shovel lol" class="h-16 w-auto sm:h-20" src={shovels} loading="lazy" />
-			<p class="text-xs">Shoveltoss &copy; 2023 - Buddies Inc.</p>
+			<p class="text-xs">Shoveltoss 2026 - Buddies Inc.</p>
 		</footer>
 	</body>
 </html>

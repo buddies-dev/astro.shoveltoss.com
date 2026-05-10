@@ -1,2 +1,1 @@
 # shoveltoss.com [![Netlify Status](https://api.netlify.com/api/v1/badges/64d69831-8eb1-4fd6-9e63-20bf3c859942/deploy-status)](https://app.netlify.com/sites/friendly-mccarthy-1e3290/deploys)
-<img src="./public/shoveltoss.com.png" />

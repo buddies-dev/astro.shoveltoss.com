@@ -1,38 +1,51 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
-import chuggo from '@public/chuggo.png';
-import shrek from '@public/shrek.png';
-import lucha from '@public/lucha.png';
+import { cld, srcset } from '../lib/cloudinary';
 
 const currentYear = new Date().getFullYear();
+const heroGif1 = 'https://res.cloudinary.com/shoveltoss-com/image/upload/v1630897183/shoveltoss.com/new-gif_soend3.gif';
+const heroGif2 = 'https://res.cloudinary.com/shoveltoss-com/image/upload/v1630897147/shoveltoss.com/new-gif_z5tflr.gif';
+const buddies = 'https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898108/shoveltoss.com/05a78d71b6c1491199825af89d3a1154_qflxtq.jpg';
+const heroSizes = '(min-width: 768px) 12rem, 50vw';
 ---
 
-<Layout heading="Shoveltoss 🍺" title="Welcome to Shoveltoss.">
+<Layout
+	heading="Shoveltoss 🍺"
+	title="Welcome to Shoveltoss."
+	lcpImage={{
+		src: cld(heroGif1, { w: 240, c: 'fill', ar: '1:1' }),
+		srcset: srcset(heroGif1, [240, 480], { c: 'fill', ar: '1:1' }),
+		sizes: heroSizes,
+	}}
+>
 	<div class="space-y-6">
 		<div class="space-y-3 text-center">
 			<p class="text-lg">Welcome to the official Shoveltoss website.</p>
-			<div class="hidden justify-center gap-4 sm:flex">
-				<Image alt="" class="h-16 w-auto" src={chuggo} />
-				<Image alt="" class="h-16 w-auto" src={shrek} />
-				<Image alt="" class="h-16 w-auto" src={lucha} />
-			</div>
 		</div>
 
 		<div class="mx-auto flex w-full max-w-sm justify-center">
 			<img
 				class="aspect-square w-1/2 rounded-l-md object-cover"
-				src="https://res.cloudinary.com/shoveltoss-com/image/upload/c_fill,h_240,w_240/v1630897183/shoveltoss.com/new-gif_soend3.gif"
+				src={cld(heroGif1, { w: 240, c: 'fill', ar: '1:1' })}
+				srcset={srcset(heroGif1, [240, 480], { c: 'fill', ar: '1:1' })}
+				sizes={heroSizes}
 				alt=""
 				width="240"
 				height="240"
+				loading="eager"
+				fetchpriority="high"
+				decoding="async"
 			/>
 			<img
 				class="aspect-square w-1/2 rounded-r-md object-cover"
-				src="https://res.cloudinary.com/shoveltoss-com/image/upload/c_fill,h_240,w_240/v1630897147/shoveltoss.com/new-gif_z5tflr.gif"
+				src={cld(heroGif2, { w: 240, c: 'fill', ar: '1:1' })}
+				srcset={srcset(heroGif2, [240, 480], { c: 'fill', ar: '1:1' })}
+				sizes={heroSizes}
 				alt=""
 				width="240"
 				height="240"
+				loading="eager"
+				decoding="async"
 			/>
 		</div>
 
@@ -54,7 +67,17 @@ const currentYear = new Date().getFullYear();
 				<p class="text-base text-[--color-fg-muted]">Shoveltoss is a phenomena manifested in the heart of Little Italy by two boys and the dream of a better shovel-based pastime.</p>
 				<p class="text-base text-[--color-fg-muted]">With it's inaugural tournament in the summer of 2016, Shoveltoss is going strong in it's {currentYear - 2016}th year and third venue!</p>
 			</div>
-			<img class="rounded-md" alt="buddies" src="https://res.cloudinary.com/shoveltoss-com/image/upload/v1630898108/shoveltoss.com/05a78d71b6c1491199825af89d3a1154_qflxtq.jpg" />
+			<img
+				class="rounded-md"
+				alt="buddies"
+				src={cld(buddies, { w: 600 })}
+				srcset={srcset(buddies, [400, 600, 800])}
+				sizes="(min-width: 640px) 50vw, 100vw"
+				width="600"
+				height="450"
+				loading="lazy"
+				decoding="async"
+			/>
 		</div>
 	</div>
 </Layout>

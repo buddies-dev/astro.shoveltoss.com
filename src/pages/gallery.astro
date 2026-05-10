@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
 import images from '@public/images.json';
+import { cld, srcset } from '../lib/cloudinary';
 
 const gallery = images.gallery;
 ---
@@ -12,14 +12,17 @@ const gallery = images.gallery;
 			gallery.map((image) => {
 				return (
 					<div class="aspect-[4/3] overflow-hidden rounded-md">
-						<a class="block h-full w-full" target="_blank" href={image} title="Click to view in new tab.">
-							<Image
+						<a class="block h-full w-full" target="_blank" rel="noopener noreferrer" href={image} title="Click to view in new tab.">
+							<img
+								src={cld(image, { w: 600, c: 'fill', ar: '4:3' })}
+								srcset={srcset(image, [400, 600, 800, 1200], { c: 'fill', ar: '4:3' })}
+								sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
 								alt="Gallery image"
-								height="500"
-								width="500"
+								height="450"
+								width="600"
 								class="h-full w-full object-cover object-center"
-								src={image}
 								loading="lazy"
+								decoding="async"
 							/>
 						</a>
 					</div>

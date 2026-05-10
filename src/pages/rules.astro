@@ -1,7 +1,5 @@
 ---
-import { Image } from 'astro:assets';
 import Layout from '@layouts/Layout.astro';
-import goldenShovel from '/public/golden-shovel.png';
 ---
 
 <Layout heading="Rules 📒" title="Rules 📒">
@@ -17,9 +15,6 @@ import goldenShovel from '/public/golden-shovel.png';
           <li>0 points are awarded if the shovel is touching any part of the front wall.</li>
           <li>-2 points if the shovel lands completely outside of the garden.</li>
         </ul>
-      </div>
-      <div class="hidden sm:block">
-        <Image alt="golden shovel" height="100" width="100" src={goldenShovel} />
       </div>
     </div>
     <div>
