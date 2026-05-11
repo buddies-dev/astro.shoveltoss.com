@@ -1,5 +1,8 @@
 ---
 import { navLinks } from '../lib/nav';
+
+const normalizePath = (path: string) => path === '/' ? '/' : path.replace(/\/$/, '');
+const currentPath = normalizePath(Astro.url.pathname);
 ---
 
 <nav class="flex flex-wrap justify-center gap-x-5 gap-y-1 text-base sm:gap-x-6">
@@ -8,7 +11,7 @@ import { navLinks } from '../lib/nav';
 			href={href}
 			class:list={[
 				"py-1 underline-offset-4 hover:underline",
-				Astro.url.pathname === href && "underline"
+				currentPath === normalizePath(href) && "underline"
 			]}
 		>
 			{label}

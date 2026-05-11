@@ -29,3 +29,37 @@ html {
 body {
   min-height: 100dvh;
 }
+
+.shine-card {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-surface), var(--color-surface)) padding-box,
+    conic-gradient(
+      from var(--shine-angle, 0deg),
+      rgba(245, 245, 247, 0.12) 0deg,
+      rgba(245, 245, 247, 0.12) 110deg,
+      rgba(245, 245, 247, 0.8) 150deg,
+      var(--color-accent) 180deg,
+      rgba(245, 245, 247, 0.8) 210deg,
+      rgba(245, 245, 247, 0.12) 250deg,
+      rgba(245, 245, 247, 0.12) 360deg
+    ) border-box;
+  animation: shine-border 4s linear infinite;
+}
+
+.shine-card:hover {
+  box-shadow: 0 0 18px color-mix(in srgb, var(--color-accent), transparent 72%);
+}
+
+@property --shine-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes shine-border {
+  to {
+    --shine-angle: 360deg;
+  }
+}
