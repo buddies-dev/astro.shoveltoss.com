@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026.05.10.1
+
+- Polish landing page and rules copy
+- Override `fast-uri` and `yaml` to patch transitive vulns
+
 ## 2026.05.10
 
 - Extract reusable site components
