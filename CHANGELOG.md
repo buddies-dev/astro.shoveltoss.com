@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026.05.10.2
+
+- Document gallery upload workflow idea
+
 ## 2026.05.10.1
 
 - Polish landing page and rules copy
